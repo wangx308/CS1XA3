@@ -22,7 +22,19 @@ def hello_world(request):
     html = "<html><body>Hello World</body></html>"
     return HttpResponse(html)
 
+
+def verify_pw(request):
+    if request.method == 'POST':
+        show = request.POST
+        if show.get('username','') == 'Jimmy' and show.get('password','') == 'Hendrix':
+            return HttpResponse('Cool')
+        else:
+            return HttpResponse('Bad User Name')
+    else:
+        return HttpResponse("This page only accepts POST request.")
+
 urlpatterns = [
     path('e/wangx308/' , hello_world) ,
+	path('e/wangx308/lab7/' , verify_password)
 ]
 
