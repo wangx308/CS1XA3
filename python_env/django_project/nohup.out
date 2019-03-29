@@ -133,3 +133,16 @@ March 17, 2019 - 02:12:32
 Django version 2.1.7, using settings 'django_project.settings'
 Starting development server at http://localhost:10059/
 Quit the server with CONTROL-C.
+[18/Mar/2019 22:23:18] "GET /e/wangx308/ HTTP/1.1" 200 37
+[18/Mar/2019 22:40:35] "GET /e/wangx308 HTTP/1.1" 301 0
+[18/Mar/2019 22:40:35] "GET /e/wangx308/ HTTP/1.1" 200 37
+[18/Mar/2019 22:40:40] "GET /e/wangx308/lab7 HTTP/1.1" 301 0
+[18/Mar/2019 22:40:40] "GET /e/wangx308/lab7/ HTTP/1.1" 200 13
+[18/Mar/2019 22:41:06] "POST /e/wangx308/lab7/ HTTP/1.1" 200 13
+[18/Mar/2019 22:41:10] "POST /e/wangx308/lab7/ HTTP/1.1" 200 13
+[18/Mar/2019 22:41:27] "POST /e/wangx308/lab7/ HTTP/1.1" 200 4
+[18/Mar/2019 22:41:28] "POST /e/wangx308/lab7/ HTTP/1.1" 200 4
+[18/Mar/2019 22:41:29] "POST /e/wangx308/lab7/ HTTP/1.1" 200 4
+[26/Mar/2019 02:54:16] "GET /e/wangx308 HTTP/1.1" 301 0
+[26/Mar/2019 02:54:16] "GET /e/wangx308/ HTTP/1.1" 200 37
+[26/Mar/2019 02:54:47] "GET /e/wangx308/ HTTP/1.1" 200 37
