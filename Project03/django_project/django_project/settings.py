@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'user_login.apps.UserLoginConfig',
     'yuzu_gallery.apps.YuzuGalleryConfig',
     'django.contrib.admin',
     'django.contrib.auth',
