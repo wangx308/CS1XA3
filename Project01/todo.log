@@ -1,4 +1,0 @@
-../Project01/project_analyze.sh:7:		  intro:Puts each line of every ﬁle in repo with the tag #TODO into a ﬁle todo.log
-../Project01/project_analyze.sh:32:		grep "#TODO" ../ -n -r --exclude=todo.log > todo.log
-../Project01/123.py:1:#TODO
-../Project01/README.md:8:Function2 can **puts each line of every ﬁle in your repo with the tag #TODO into a ﬁle todo.log**
