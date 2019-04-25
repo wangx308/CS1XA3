@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('user-login/', include('user_login.urls')),
-    path('yuzu-gallery/', include('yuzu_gallery.urls')),
+    path('e/admin/', admin.site.urls),
+    path('e/user-login/', include('user_login.urls')),
+    path('e/yuzu-gallery/', include('yuzu_gallery.urls')),
 ]
