@@ -116,5 +116,5 @@ USE_TZ = True
 
 STATIC_URL = '/u/wangx308/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '..', '..', 'public_html', 'static', 'uploads')
-MEDIA_URL = '/u/wangx308/uploads/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', '..', 'public_html', 'media')
+MEDIA_URL = '/u/wangx308/media/'

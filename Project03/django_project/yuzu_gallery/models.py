@@ -9,7 +9,7 @@ class GalleryUser(models.Model):
 
 
 class Image(models.Model):
-    image = models.ImageField(upload_to='images_upload')
+    image = models.ImageField(upload_to='images')
     upload_time = models.DateTimeField()
     uploader = models.ForeignKey(to=GalleryUser, on_delete=models.SET_NULL, null=True)
 
