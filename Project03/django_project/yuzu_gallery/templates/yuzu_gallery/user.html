@@ -1,0 +1,65 @@
+{% extends "yuzu_gallery/base.html" %}
+{% load static %}
+
+{% block body %}
+
+    {% if user.is_authenticated %}
+
+        <div>
+            <div class="media">
+                <img style="position: relative; left:100px" height="200" width="200"
+                     src="{% static "yuzu_gallery/image/106.jpg" %}" class="align-self-start mr-3" alt="...">
+                <div class="media-body">
+                    <h1 style="position: relative; left:200px" class="mt-0">{{ user.username }}</h1>
+                    <br>
+                    <br>
+                    <h3 style="position: relative; left:200px">Intro</h3>
+                    <br>
+                    <a style="position: relative;left: 200px" href="{% url 'yuzu_gallery:upload' %}">upload</a>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h2 style="position: relative; left: 30px">Favorite Image</h2>
+            <div class="card-deck">
+                <div class="card">
+                    <img src="{% static "yuzu_gallery/image/102.jpg" %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="{% static "yuzu_gallery/image/099.jpg" %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="{% static "yuzu_gallery/image/100.jpg" %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+
+        <div>
+            Please login
+        </div>
+
+    {% endif %}
+
+
+{% endblock %}

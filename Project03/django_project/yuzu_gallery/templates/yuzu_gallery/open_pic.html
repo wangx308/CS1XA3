@@ -1,0 +1,41 @@
+{% extends "yuzu_gallery/base.html" %}
+{% load static %}
+
+{% block body %}
+
+    <img src="image/012.jpg">
+    <br>
+    <br>
+    <br>
+
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="image/009.jpg" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Username</h5>
+                    <p class="card-text">Intro</p>
+                    <p class="card-text">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <button style="width: 200px; height: 100px; position: relative;left: 45%" type="button" class="btn btn-danger">
+        Like
+    </button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}

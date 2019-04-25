@@ -1,0 +1,48 @@
+{% extends "yuzu_gallery/base.html" %}
+{% load static %}
+
+{% block body %}
+
+<h1>Tag</h1>
+
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+        <td>
+      <a href="{% static "yuzu_gallery/image/105.jpg"%}">
+          Girl
+      </a>
+        </td>
+      <td>999</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+        <td>
+      <a href="{% static "yuzu_gallery/image/104.jpg"%}">
+          Cute
+      </a>
+        </td>
+      <td>666</td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th scope="row">4</th>
+        <td></td>
+        <td></td>
+    </tr>
+  </tbody>
+</table>
+
+{% endblock %}
