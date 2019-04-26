@@ -37,4 +37,4 @@ def logout(request):
         auth.logout(request)
         return redirect('yuzu_gallery:index')
     else:
-        return redirect('user_login:login')
+        return redirect('yuzu_gallery:index')

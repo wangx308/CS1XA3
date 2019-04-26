@@ -2,121 +2,26 @@
 {% load static %}
 
 {% block body %}
-
-    <div class="bd-example">
-        <div class="position-relative" style="position: relative; left: 230px">
-            <div class="h-75 d-inline-block" style="width: 1000px; background-color: rgba(0,0,255,.1)">
-                <div id="carouselExampleCaptions" class="carousel slide " data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <a href="{% static "yuzu_gallery/image/009.jpg" %}">
-                                <img src="{% static "yuzu_gallery/image/009.jpg" %}" class="d-block w-100" alt="...">
-                            </a>
-                            <div class="carousel-caption d-none d-md-block">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="{% static "yuzu_gallery/image/010.jpg" %}">
-                                <img src="{% static "yuzu_gallery/image/010.jpg" %}" class="d-block w-100" alt="...">
-                            </a>
-                            <div class="carousel-caption d-none d-md-block">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="{% static "yuzu_gallery/image/011.jpg" %}">
-                                <img src="{% static "yuzu_gallery/image/011.jpg" %}" class="d-block w-100" alt="...">
-                            </a>
-                            <div class="carousel-caption d-none d-md-block">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="{% static "yuzu_gallery/image/19983707.jpg" %}">
-                                <img src="{% static "yuzu_gallery/image/19983707.jpg" %}" class="d-block w-100" alt="...">
-                            </a>
-                            <div class="carousel-caption d-none d-md-block">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="{% static "yuzu_gallery/image/20077741.jpg" %}">
-                                <img src="{% static "yuzu_gallery/image/20077741.jpg" %}" class="d-block w-100" alt="...">
-                            </a>
-                            <div class="carousel-caption d-none d-md-block">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="{% static "yuzu_gallery/image/20117440.jpg.jpg" %}">
-                                <img src="{% static "yuzu_gallery/image/20117440.jpg" %}" class="d-block w-100" alt="...">
-                            </a>
-                            <div class="carousel-caption d-none d-md-block">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <a href="{% static "yuzu_gallery/image/20146458.jpg" %}">
-                                <img src="{% static "yuzu_gallery/image/20146458.jpg" %}" class="d-block w-100" alt="...">
-                            </a>
-                            <div class="carousel-caption d-none d-md-block">
-                            </div>
-                        </div>
+    <div class="d-flex flex-row justify-content-around align-items-stretch flex-wrap">
+        {% for image in random_images %}
+            <div class="shadow p-1 mb-5 bg-white rounded d-flex flex-column justify-content-between"
+                 style="flex-basis: 30%">
+                <a href="{% url 'yuzu_gallery:image' image.id %}">
+                    <img src="{{ image.image.url }}" alt="..." style="width: 100%; height: auto">
+                </a>
+                <div>
+                    <hr class="m-1">
+                    {% for tag in image.tags.all %}
+                        <a class="badge badge-secondary" href="{% url 'yuzu_gallery:tag' tag.id %}"># {{ tag.name }}</a>
+                    {% endfor %}
+                    <hr class="m-1">
+                    <div class="text-dark d-flex flex-row justify-content-between">
+                        <span>{{ image.uploader.user.username }} | {{ image.upload_time|date }}</span>
+                        <span>❤ <b>{{ image.liked_users.all|length }}</b></span>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
                 </div>
             </div>
-        </div>
+        {% endfor %}
     </div>
 
-    <br>
-    <br>
-
-
-{#    {% for images in  %}#}
-    <div class="card-group">
-        <div class="card">
-            <a href="{% static "yuzu_gallery/image/008.jpg" %}">
-                <img src="{% static "yuzu_gallery/image/008.jpg" %}" class="card-img-top" alt="...">
-            </a>
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </p>
-            </div>
-        </div>
-        <div class="card">
-            <a href="{% static "yuzu_gallery/image/012.jpg" %}">
-                <img src="{% static "yuzu_gallery/image/012.jpg" %}" class="card-img-top" alt="...">
-            </a>
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </p>
-            </div>
-        </div>
-        <div class="card">
-            <a href="{% static "yuzu_gallery/image/013.jpg" %}">
-                <img src="{% static "yuzu_gallery/image/013.jpg" %}" class="card-img-top" alt="...">
-            </a>
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </p>
-            </div>
-        </div>
-    </div>
-    #
 {% endblock %}

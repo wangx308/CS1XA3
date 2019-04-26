@@ -2,64 +2,64 @@
 {% load static %}
 
 {% block body %}
-
-    {% if user.is_authenticated %}
-
+    <h1 class="display-1 font-weight-bolder" style="color: white;">{{ user.username }}</h1>
+    <br>
+    <br>
+    <div>
         <div>
-            <div class="media">
-                <img style="position: relative; left:100px" height="200" width="200"
-                     src="{% static "yuzu_gallery/image/106.jpg" %}" class="align-self-start mr-3" alt="...">
-                <div class="media-body">
-                    <h1 style="position: relative; left:200px" class="mt-0">{{ user.username }}</h1>
-                    <br>
-                    <br>
-                    <h3 style="position: relative; left:200px">Intro</h3>
-                    <br>
-                    <a style="position: relative;left: 200px" href="{% url 'yuzu_gallery:upload' %}">upload</a>
-                </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <h2 style="position: relative; left: 30px">Favorite Image</h2>
-            <div class="card-deck">
-                <div class="card">
-                    <img src="{% static "yuzu_gallery/image/102.jpg" %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="{% static "yuzu_gallery/image/099.jpg" %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="{% static "yuzu_gallery/image/100.jpg" %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <h3 class="display-4" style="color: #CC3434">Liked Images</h3>
         </div>
+        <div class="d-flex flex-row justify-content-around align-items-stretch flex-wrap">
+            {% for image in liked_images %}
+                <div class="shadow p-1 mb-5 bg-white rounded d-flex flex-column justify-content-between"
+                     style="flex-basis: 30%">
+                    <a href="{% url 'yuzu_gallery:image' image.id %}">
+                        <img src="{{ image.image.url }}" alt="..." style="width: 100%; height: auto">
+                    </a>
+                    <div>
+                        <hr class="m-1">
+                        {% for tag in image.tags.all %}
+                            <a class="badge badge-secondary"
+                               href="{% url 'yuzu_gallery:tag' tag.id %}"># {{ tag.name }}</a>
+                        {% endfor %}
+                        <hr class="m-1">
+                        <div class="text-dark d-flex flex-row justify-content-between">
+                            <span>{{ image.uploader.user.username }} | {{ image.upload_time|date }}</span>
+                            <span>❤ <b>{{ image.liked_users.all|length }}</b></span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
-    {% else %}
 
+    <div>
         <div>
-            Please login
+            <h3 class="display-4" style="color: darkturquoise">Uploaded Images</h3>
         </div>
-
-    {% endif %}
-
+        <div class="d-flex flex-row justify-content-around align-items-stretch flex-wrap">
+            {% for image in uploaded_images %}
+                <div class="shadow p-1 mb-5 bg-white rounded d-flex flex-column justify-content-between"
+                     style="flex-basis: 30%">
+                    <a href="{% url 'yuzu_gallery:image' image.id %}">
+                        <img src="{{ image.image.url }}" alt="..." style="width: 100%; height: auto">
+                    </a>
+                    <div>
+                        <hr class="m-1">
+                        {% for tag in image.tags.all %}
+                            <a class="badge badge-secondary"
+                               href="{% url 'yuzu_gallery:tag' tag.id %}"># {{ tag.name }}</a>
+                        {% endfor %}
+                        <hr class="m-1">
+                        <div class="text-dark d-flex flex-row justify-content-between">
+                            <span>{{ image.uploader.user.username }} | {{ image.upload_time|date }}</span>
+                            <span>❤ <b>{{ image.liked_users.all|length }}</b></span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}

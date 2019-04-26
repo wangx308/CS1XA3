@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% extends "yuzu_gallery/base.html" %}
+{% load static %}
 
-</head>
-<body>
-<div>
-<div>
-<input type="file">
-</div>
-<button>
-    <span>upload
-    </span>
-</button>
-</div>
-</body>
-</html>
+{% block body %}
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <div>
+                <button type="submit" role="button" class="btn btn-success">
+                    Upload
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
