@@ -72,6 +72,13 @@ def upload(request):
             if form.is_valid():
                 form.cleaned_data['uploader'] = request.user.gallery_user
                 image = form.save()
+                for tag_id in request.POST.getlist('tag-selection'):
+                    try:
+                        tag = Tag.objects.get(pk=int(tag_id))
+                    except (Tag.DoesNotExist, ValueError):
+                        continue
+                    tag.images.add(image)
+                    tag.save()
                 return open_pic(request, id=image.id)
             # there is a bug: when open "open_pic", it will send a POST to the "open_pic", then it will give a auto LIKE
             else:
@@ -81,10 +88,11 @@ def upload(request):
                 return render(request, template_name='yuzu_gallery/upload.html', context=context)
 
         else:
+            tags = list(Tag.objects.all())
             form = ImageUploadForm(initial={'uploader': request.user.gallery_user.id})
             form.fields['uploader'].widget.attrs.update({'hidden': 'hidden'})
             form.fields['uploader'].label = ''
-            context = {'form': form}
+            context = {'form': form, 'tags':tags}
             return render(request, template_name='yuzu_gallery/upload.html', context=context)
     else:
         return redirect('user_login:login')
