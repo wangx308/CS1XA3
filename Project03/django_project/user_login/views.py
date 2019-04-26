@@ -27,7 +27,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             auth.login(request, user)
-            return redirect('yuzu_gallery:index')
+            return redirect('yuzu_gallery:click_this')
     else:
         return render(request, 'user_login/register.html')
 

@@ -51,7 +51,6 @@ def user(request, id: int = None):
         return redirect('user_login:login')
 
 
-
 def tag_all(request):
     tags = list(Tag.objects.all())
     return render(request, 'yuzu_gallery/tag_all.html', context={'tags': tags})
@@ -71,6 +70,7 @@ def upload(request):
         if request.method == 'POST':
             form = ImageUploadForm(request.POST, request.FILES)
             if form.is_valid():
+                form.cleaned_data['uploader'] = request.user.gallery_user
                 image = form.save()
                 return open_pic(request, id=image.id)
             # there is a bug: when open "open_pic", it will send a POST to the "open_pic", then it will give a auto LIKE
@@ -80,7 +80,22 @@ def upload(request):
 
         else:
             form = ImageUploadForm()
+            form.fields['uploader'].widget.attrs.update({'hidden': 'hidden'})
+            form.fields['uploader'].label = ''
             context = {'form': form}
             return render(request, template_name='yuzu_gallery/upload.html', context=context)
+    else:
+        return redirect('user_login:login')
+
+
+def prime(request):
+    u = request.user
+    if u.is_authenticated:
+        try:
+            u.gallery_user is None
+        except GalleryUser.DoesNotExist:
+            gu = GalleryUser(user=u)
+            gu.save()
+        redirect('yuzu_gallery:index')
     else:
         return redirect('user_login:login')

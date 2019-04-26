@@ -25,6 +25,8 @@ class ImageUploadForm(forms.ModelForm):
         fields = ['image','uploader']
 
 
+
+
 class Tag(models.Model):
     name = models.CharField(max_length=100)
     images = models.ManyToManyField(to=Image, related_name='tags', related_query_name='tag')
