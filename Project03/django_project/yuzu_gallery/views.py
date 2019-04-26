@@ -75,6 +75,8 @@ def upload(request):
                 return open_pic(request, id=image.id)
             # there is a bug: when open "open_pic", it will send a POST to the "open_pic", then it will give a auto LIKE
             else:
+                form.fields['uploader'].widget.attrs.update({'hidden': 'hidden'})
+                form.fields['uploader'].label = ''
                 context = {'form': form}
                 return render(request, template_name='yuzu_gallery/upload.html', context=context)
 
