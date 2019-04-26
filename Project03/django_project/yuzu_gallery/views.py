@@ -10,10 +10,10 @@ from django import forms
 
 def index(request):
     images = list(Image.objects.all())
-    if len(images) <= 12:
+    if len(images) <= 24:
         picked = images
     else:
-        picked = random.choices(images, k=12)
+        picked = random.choices(images, k=24)
 
     return render(request, 'yuzu_gallery/index.html', context={'random_images': picked})
 
