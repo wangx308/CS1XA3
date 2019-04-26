@@ -9,6 +9,8 @@
 2. Users can sign in and upload the pictures, which also can be seen by other users.
 3. Users can give a like to their favorite pictures.
 4. Users can see how many people like this image.
+5. Users can select several tags when uploading images(use "ctrl" to select more).
+
 
 click register to sign in an account
 
