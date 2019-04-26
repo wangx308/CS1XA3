@@ -96,6 +96,6 @@ def prime(request):
         except GalleryUser.DoesNotExist:
             gu = GalleryUser(user=u)
             gu.save()
-        redirect('yuzu_gallery:index')
+        return redirect('yuzu_gallery:index')
     else:
         return redirect('user_login:login')
