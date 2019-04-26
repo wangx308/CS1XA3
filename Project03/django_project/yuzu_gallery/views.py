@@ -13,7 +13,7 @@ def index(request):
     if len(images) <= 24:
         picked = images
     else:
-        picked = random.choices(images, k=24)
+        picked = random.sample(images, k=24)
 
     return render(request, 'yuzu_gallery/index.html', context={'random_images': picked})
 
