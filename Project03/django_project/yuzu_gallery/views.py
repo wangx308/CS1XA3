@@ -79,7 +79,7 @@ def upload(request):
                 return render(request, template_name='yuzu_gallery/upload.html', context=context)
 
         else:
-            form = ImageUploadForm()
+            form = ImageUploadForm(initial={'uploader': request.user.gallery_user.id})
             form.fields['uploader'].widget.attrs.update({'hidden': 'hidden'})
             form.fields['uploader'].label = ''
             context = {'form': form}

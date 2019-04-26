@@ -13,5 +13,5 @@ urlpatterns = [
     path('user', views.user, name='user_self'),
     path('upload', views.upload, name='upload'),
     path('tag_all', views.tag_all, name='tag_all'),
-    path('prime', views.prime,name='click_this' )
+    path('prime', views.prime, name='click_this')
 ]
