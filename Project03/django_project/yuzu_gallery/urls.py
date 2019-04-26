@@ -1,7 +1,6 @@
 from django.conf.urls.static import static
 from django.urls import path
 
-from Project03.django_project.django_project import settings
 from . import views
 
 app_name = 'yuzu_gallery'
