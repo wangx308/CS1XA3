@@ -17,7 +17,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from Project03.django_project.django_project import settings
+from . import settings
 
 urlpatterns = [
                   path('e/wangx308/admin/', admin.site.urls),
