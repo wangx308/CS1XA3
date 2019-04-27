@@ -10,7 +10,8 @@
         <div>
             <div>
                 {% for tag in image.tags.all %}
-                    <h1 class="d-inline"><span class="badge badge-secondary"># {{ tag.name }}</span></h1>
+                    <h1><a class="badge badge-secondary" href="{% url 'yuzu_gallery:tag' tag.id %}"># {{ tag.name }}</a></h1>
+
                 {% endfor %}
             </div>
             <hr class="m-1" style="background: #f6f6f655">
