@@ -15,7 +15,8 @@
             </div>
             <hr class="m-1" style="background: #f6f6f655">
             <div class="d-flex flex-row justify-content-between lead text-light">
-                <span>{{ image.uploader.user.username }} | {{ image.upload_time|date }}</span>
+                <span><a
+                        href="{% url 'yuzu_gallery:user' image.uploader.user.id %}">{{ image.uploader.user.username }}</a> | {{ image.upload_time|date }}</span>
                 <form method="post">
                     {% csrf_token %}
                     <button class="btn btn-danger btn-lg" role="button" type="submit">

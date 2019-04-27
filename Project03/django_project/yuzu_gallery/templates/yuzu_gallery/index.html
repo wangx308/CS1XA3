@@ -16,7 +16,11 @@
                     {% endfor %}
                     <hr class="m-1">
                     <div class="text-dark d-flex flex-row justify-content-between">
-                        <span>{{ image.uploader.user.username }} | {{ image.upload_time|date }}</span>
+                        <span>
+                            <a href="{% url 'yuzu_gallery:user' image.uploader.user.id %}">{{ image.uploader.user.username }}</a>
+                            |
+                            <span>{{ image.upload_time|date }}</span>
+                        </span>
                         <span>❤ <b>{{ image.liked_users.all|length }}</b></span>
                     </div>
                 </div>

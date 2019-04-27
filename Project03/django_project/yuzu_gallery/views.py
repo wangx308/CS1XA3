@@ -46,7 +46,7 @@ def user(request, id: int = None):
         uploaded_images = user.gallery_user.uploaded_images.all()
         liked_images = user.gallery_user.liked_images.all()
         return render(request, 'yuzu_gallery/user.html',
-                      context={'uploaded_images': uploaded_images, 'liked_images': liked_images})
+                      context={'uploaded_images': uploaded_images, 'liked_images': liked_images, 'profile_user':user})
     else:
         return redirect('user_login:login')
 
